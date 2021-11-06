@@ -75,6 +75,23 @@ public class main {
 
                     case 2:
                         // At Certain Index Method
+                        System.out.println("Enter the Serial Number of the Cargo");
+                        String cargoSN1 = input.nextLine();
+                        cargoSN1 = input.nextLine();
+                        Cargo c1 = new Cargo(cargoSN1);
+                        System.out.println("Enter the x-index you want to add the cargo at");
+                        int x = input.nextInt();
+                        System.out.println("Enter the y-index you want to add the cargo at");
+                        int y = input.nextInt();
+                        if (s.stackCargoAtIndex(c1, x, y)) {
+                            System.out.println(cargoSN1 + " has been added to the ship successfully");
+                        } else {
+                            System.out.println(cargoSN1 + " couldn't be added to the ship");
+                        }
+
+                        // to go back to the main menu
+                        backToMenu(input, back);
+                        break;
 
                     case 3:
                         // this case is empty so the program doesn't go to default case when exiting

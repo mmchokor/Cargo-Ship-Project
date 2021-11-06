@@ -134,6 +134,7 @@ public class Ship {
         if (!shipIsFull()) {
             if (!pile[x - 1][y - 1].isFull()) {
                 pile[x - 1][y - 1].push(c);
+                return true;
             }
             return false;
         }
