@@ -43,10 +43,14 @@ public class Ship {
     }
 
     public boolean shipIsEmpty() {
-        if (pile[0][0].isEmpty()) {
-            return true;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (!pile[i][j].isEmpty()) {
+                    return false;
+                }
+            }
         }
-        return false;
+        return true;
     }
 
     public boolean shipIsFull() {
