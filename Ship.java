@@ -50,10 +50,14 @@ public class Ship {
     }
 
     public boolean shipIsFull() {
-        if (pile[row - 1][col - 1].isFull() == true) {
-            return true;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (!pile[i][j].isFull()) {
+                    return false;
+                }
+            }
         }
-        return false;
+        return true;
     }
 
     public boolean pushCargo(Cargo c) {
@@ -67,7 +71,6 @@ public class Ship {
                 }
             }
             pile[i][j].push(c);
-            j++;
             return true;
         }
         return false;

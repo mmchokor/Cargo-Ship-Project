@@ -2,17 +2,21 @@ public class test {
     public static void main(String[] args) {
         Ship s = new Ship(2, 1, 3);
 
-        Cargo c[] = { new Cargo("1"), new Cargo("2"), new Cargo("3"), new Cargo("4"), new Cargo("5"), new Cargo("6") };
-
-        for (int i = 0; i < c.length - 3; i++) {
+        Cargo c[] = { new Cargo("1"), new Cargo("2"), new Cargo("3"), new Cargo("1"), new Cargo("2"), new Cargo("3") };
+        for (int i = 0; i < c.length ; i++) {
             if (s.pushCargo(c[i]) == false) {
                 System.out.println("The ship is full");
                 break;
             }
         }
 
-        System.out.println(s.stackCargoAtIndex(c[5], 1, 1));
+        s.displayShip();
 
+        s.deleteCargoindexShip(1, 1, 2);
+
+        s.displayShip();
+
+        s.pushCargo(c[2]);
         s.displayShip();
 
         // CargoStack g = new CargoStack(5);
