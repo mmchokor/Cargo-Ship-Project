@@ -130,19 +130,15 @@ public class Ship {
     }
 
     // delete a cargo by its index
-    public boolean deleteCargoindexShip(int x, int y, int z) {
+    public Cargo deleteCargoindexShip(int x, int y, int z) {
+        Cargo returnC = new Cargo("The Ship is Empty!");
         if (!shipIsEmpty()) {
             if (x > row || y > col) {
-                return false;
+                return returnC = new Cargo("Invalid Index!");
             }
-            if (!pile[x - 1][y - 1].isEmpty()) {
-                if (pile[x - 1][y - 1].deleteCargoIndexStack(z))
-                    return true;
-                return false;
-            }
-            return false;
+            return pile[x - 1][y - 1].deleteCargoIndexStack(z);
         }
-        return false;
+        return returnC;
     }
 
     // delete a cargo by its name

@@ -70,7 +70,8 @@ public class CargoStack extends CargoList {
     }
 
     // delete cargo by name
-    public boolean deleteCargoIndexStack(int index) {
+    public Cargo deleteCargoIndexStack(int index) {
+        Cargo returnC = new Cargo("There is no Cargo at this index");
         if (!isEmpty()) {
             CargoStack temp = new CargoStack(stackSize);
             int i = 0;
@@ -79,16 +80,16 @@ public class CargoStack extends CargoList {
                 Cargo value = pop();
                 temp.push(value);
                 if (tempCurrent - i == index) {
-                    temp.pop();
+                    returnC = temp.pop();
                 }
                 i++;
             }
             while (!temp.isEmpty()) {
                 push(temp.pop());
             }
-            return true;
+            return returnC;
         }
-        return false;
+        return returnC;
     }
 
     public boolean deleteCargoNameStack(String name) {

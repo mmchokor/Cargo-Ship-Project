@@ -104,7 +104,6 @@ public class main {
                     }
                 } while (addingCargoSelect != 3);
 
-
                 break;
 
             case 2:
@@ -131,7 +130,7 @@ public class main {
                         Cargo temp = s.popCargo();
                         if (temp.getSn().equals("The Ship is Empty!")) {
                             System.out.println(temp.getSn());
-                        } else{
+                        } else {
                             System.out.println(temp.getSn() + " has been removed Successfully");
                         }
 
@@ -147,12 +146,18 @@ public class main {
                         int y = input.nextInt();
                         System.out.println("Enter the z-index you want to remove the cargo from");
                         int z = input.nextInt();
-                        if (s.deleteCargoindexShip(x, y, z)) {
-                            System.out.println( " has been added to the ship successfully");
+                        Cargo temp1 = s.deleteCargoindexShip(x, y, z);
+                        if (temp1.getSn().equals("The Ship is Empty!")
+                                || temp1.getSn().equals("There is no Cargo at this index")
+                                || temp1.getSn().equals("Invalid Index!")) {
+                                    System.out.println(temp1.getSn());
                         } else {
-                            System.out.println(" couldn't be added to the ship");
+                            System.out.println(temp1.getSn() + " has been removed Successfully");
                         }
 
+                        // to go back to the main menu
+                        backToMenu(input, back);
+                        
                         break;
 
                     case 3:
