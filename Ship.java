@@ -147,6 +147,7 @@ public class Ship {
             int position[] = SearchCargoShip(name);
             if (position[0] != -1) {
                 deleteCargoindexShip(position[0], position[1], position[2]);
+                return true;
             }
             return false;
         }

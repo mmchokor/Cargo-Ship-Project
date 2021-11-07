@@ -117,7 +117,7 @@ public class main {
                     System.out.println("                    Removing Method");
                     System.out.println("----------------------------------------------------");
                     System.out.println("1 - Normal Method");
-                    System.out.println("2 - At Certain Index Method");
+                    System.out.println("2 - At Cargo Index Method");
                     System.out.println("3 - By the Cargo name Method");
                     System.out.println("4 - Remove all the Cargo on the Ship");
                     System.out.println("5 - Return to main menu");
@@ -150,22 +150,38 @@ public class main {
                         if (temp1.getSn().equals("The Ship is Empty!")
                                 || temp1.getSn().equals("There is no Cargo at this index")
                                 || temp1.getSn().equals("Invalid Index!")) {
-                                    System.out.println(temp1.getSn());
+                            System.out.println(temp1.getSn());
                         } else {
                             System.out.println(temp1.getSn() + " has been removed Successfully");
                         }
 
                         // to go back to the main menu
                         backToMenu(input, back);
-                        
+
                         break;
 
                     case 3:
+                        System.out.println("Enter the Serial Number of the Cargo you want to delete");
+                        String snDelete = input.nextLine();
+                        snDelete = input.nextLine();
+                        if (s.deleteCargoNameShip(snDelete)) {
+                            System.out.println(snDelete + " has been removed successfully");
+                        } else {
+                            System.out.println(snDelete + " couldn't be found to be removed");
+                        }
 
+                        // to go back to the main menu
+                        backToMenu(input, back);
                         break;
 
                     case 4:
-
+                        if (s.popAllShip()) {
+                            System.out.println("The Ship has been cleared");
+                        } else {
+                            System.out.println("The Ship is already Empty!");
+                        }
+                        // to go back to the main menu
+                        backToMenu(input, back);
                         break;
 
                     case 5:
