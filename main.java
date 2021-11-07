@@ -45,7 +45,7 @@ public class main {
                 System.out.println("---------------------------------------------------");
                 System.out.println("                   Cargo Adding");
                 System.out.println("---------------------------------------------------");
-                int roomInfoSelect;
+                int addingCargoSelect;
                 do {
                     System.out.println("----------------------------------------------------");
                     System.out.println("                    Adding Method");
@@ -54,11 +54,11 @@ public class main {
                     System.out.println("2 - At Certain Index Method");
                     System.out.println("3 - Return to main menu");
                     System.out.println("Enter the Adding method number:");
-                    roomInfoSelect = input.nextInt();
+                    addingCargoSelect = input.nextInt();
 
-                    switch (roomInfoSelect) {
+                    switch (addingCargoSelect) {
                     case 1:
-                        // Normal Method abd that by pushing in the order
+                        // Normal Method and thats by placing the cargo at the furtest point of the ship
                         System.out.println("Enter the Serial Number of the Cargo");
                         String cargoSN = input.nextLine();
                         cargoSN = input.nextLine();
@@ -102,14 +102,77 @@ public class main {
                         System.out.println("Invalid Input! \nTry Again.");
                         break;
                     }
-                } while (roomInfoSelect != 3);
+                } while (addingCargoSelect != 3);
 
-                // to go back to the main menu
-                backToMenu(input, back);
 
                 break;
 
             case 2:
+                // Removing cargo from the ship menu
+                System.out.println("---------------------------------------------------");
+                System.out.println("                   Cargo Removing");
+                System.out.println("---------------------------------------------------");
+                int removingCargoSelect;
+                do {
+                    System.out.println("----------------------------------------------------");
+                    System.out.println("                    Removing Method");
+                    System.out.println("----------------------------------------------------");
+                    System.out.println("1 - Normal Method");
+                    System.out.println("2 - At Certain Index Method");
+                    System.out.println("3 - By the Cargo name Method");
+                    System.out.println("4 - Remove all the Cargo on the Ship");
+                    System.out.println("5 - Return to main menu");
+                    System.out.println("Enter the Adding method number:");
+                    removingCargoSelect = input.nextInt();
+
+                    switch (removingCargoSelect) {
+                    case 1:
+                        // Normal Method abd that by removing the nearest cargo on the ship
+                        Cargo temp = s.popCargo();
+                        if (temp.getSn().equals("The Ship is Empty!")) {
+                            System.out.println(temp.getSn());
+                        } else{
+                            System.out.println(temp.getSn() + " has been removed Successfully");
+                        }
+
+                        // to go back to the main menu
+                        backToMenu(input, back);
+                        break;
+
+                    case 2:
+                        // At Certain Index Method
+                        System.out.println("Enter the x-index you want to remove the cargo from");
+                        int x = input.nextInt();
+                        System.out.println("Enter the y-index you want to remove the cargo from");
+                        int y = input.nextInt();
+                        System.out.println("Enter the z-index you want to remove the cargo from");
+                        int z = input.nextInt();
+                        if (s.deleteCargoindexShip(x, y, z)) {
+                            System.out.println( " has been added to the ship successfully");
+                        } else {
+                            System.out.println(" couldn't be added to the ship");
+                        }
+
+                        break;
+
+                    case 3:
+
+                        break;
+
+                    case 4:
+
+                        break;
+
+                    case 5:
+                        // this case is empty so the program doesn't go to default case when exiting
+                        System.out.println();
+                        break;
+
+                    default:
+                        System.out.println("Invalid Input! \nTry Again.");
+                        break;
+                    }
+                } while (removingCargoSelect != 5);
 
                 break;
 

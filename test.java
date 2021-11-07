@@ -1,5 +1,3 @@
-import javax.swing.SortingFocusTraversalPolicy;
-
 public class test {
     public static void main(String[] args) {
         Ship s = new Ship(2, 1, 3);
@@ -14,9 +12,6 @@ public class test {
 
         s.displayShip();
 
-        System.out.println("After deleting everything");
-        s.popAllShip();
-        s.displayShip();
 
 
         // CargoStack g = new CargoStack(5);

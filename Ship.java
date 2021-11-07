@@ -74,16 +74,29 @@ public class Ship {
         return false;
     }
 
-    public boolean popCargo() {
+    public Cargo popCargo() {
         for (int i = row - 1; i > -1; i--) {
             for (int j = col - 1; j > -1; j--) {
                 if (!pile[i][j].isEmpty()) {
-                    pile[i][j].pop();
-                    return true;
+                    return pile[i][j].pop();
                 }
             }
         }
-        return false;
+        
+        Cargo empty = new Cargo("The Ship is Empty!");
+        return empty;
+    }
+
+    public Cargo peekCargo() {
+        for (int i = row - 1; i > -1; i--) {
+            for (int j = col - 1; j > -1; j--) {
+                if (!pile[i][j].isEmpty()) {
+                    return pile[i][j].peek();
+                }
+            }
+        }
+        Cargo empty = new Cargo("The Ship is Empty!");
+        return empty;
     }
 
     public boolean popAllShip() {
