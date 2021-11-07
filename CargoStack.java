@@ -12,11 +12,14 @@ public class CargoStack extends CargoList {
     }
 
     // push method to insert integers to the beginning of the stack
-    public void push(Cargo value) {
+    public boolean push(Cargo value) {
         if (!isFull()) {
-            insertAtFront(value);
-            currentNb++;
+            if (insertAtFront(value)) {
+                currentNb++;
+                return true;
+            }
         }
+        return false;
     }
 
     // pop method to remove an integers from the stack and return its value

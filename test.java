@@ -17,6 +17,7 @@ public class test {
         s.displayShip();
 
         s.pushCargo(c[2]);
+        
         s.displayShip();
 
         // CargoStack g = new CargoStack(5);

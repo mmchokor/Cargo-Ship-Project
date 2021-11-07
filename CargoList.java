@@ -30,7 +30,7 @@ public class CargoList {
 
     // Method insertAtFront(int v) that inserts the element of value v at the
     // beginning of the linked list
-    public void insertAtFront(Cargo v) {
+    public boolean insertAtFront(Cargo v) {
         CargoNode p = new CargoNode(v);
         if (first == null) {
             first = p;
@@ -38,6 +38,7 @@ public class CargoList {
             p.next = first;
             first = p;
         }
+        return true;
     }
 
     // Method deleteFromFront() that removes the first element from the linked list
