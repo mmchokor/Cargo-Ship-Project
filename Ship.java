@@ -4,8 +4,6 @@ public class Ship {
     private int row;
     private int col;
     protected CargoStack pile[][] = new CargoStack[100][100];
-    private int i = 0;
-    private int j = 0;
     private int stackSize = 0;
 
     // Constructors
@@ -76,16 +74,30 @@ public class Ship {
         return false;
     }
 
-    public Cargo popCargo() {
-        if (pile[i][j].isEmpty()) {
-            if (j == 0) {
-                i--;
-                j = pile[0].length - 1;
-            } else {
-                j--;
+    public boolean popCargo() {
+        for (int i = row - 1; i > -1; i--) {
+            for (int j = col - 1; j > -1; j--) {
+                if (!pile[i][j].isEmpty()) {
+                    pile[i][j].pop();
+                    return true;
+                }
             }
         }
-        return pile[i][j].pop();
+        return false;
+    }
+
+    public boolean popAllShip() {
+        if (!shipIsEmpty()) {
+            for (int i = row - 1; i > -1; i--) {
+                for (int j = col - 1; j > -1; j--) {
+                    while (!pile[i][j].isEmpty()) {
+                        pile[i][j].pop();
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     public int[] SearchCargoShip(String name) {
@@ -145,14 +157,18 @@ public class Ship {
     }
 
     public void displayShip() {
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                if (!pile[i][j].isEmpty()) {
-                    System.out.printf("Pile[%d][%d]:\n", i + 1, j + 1);
-                    pile[i][j].displayStack();
-                } else {
-                }
+        if (shipIsEmpty()) {
+            System.out.println("The Ship is Empty!");
+        } else {
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < col; j++) {
+                    if (!pile[i][j].isEmpty()) {
+                        System.out.printf("Pile[%d][%d]:\n", i + 1, j + 1);
+                        pile[i][j].displayStack();
+                    } else {
+                    }
 
+                }
             }
         }
     }
