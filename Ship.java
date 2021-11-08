@@ -75,16 +75,16 @@ public class Ship {
     }
 
     public Cargo popCargo() {
-        for (int i = row - 1; i > -1; i--) {
-            for (int j = col - 1; j > -1; j--) {
-                if (!pile[i][j].isEmpty()) {
-                    return pile[i][j].pop();
+        if (!shipIsEmpty()) {
+            for (int i = row - 1; i > -1; i--) {
+                for (int j = col - 1; j > -1; j--) {
+                    if (!pile[i][j].isEmpty()) {
+                        return pile[i][j].pop();
+                    }
                 }
             }
         }
-        
-        Cargo empty = new Cargo("The Ship is Empty!");
-        return empty;
+        return null;
     }
 
     public Cargo peekCargo() {
@@ -131,14 +131,13 @@ public class Ship {
 
     // delete a cargo by its index
     public Cargo deleteCargoindexShip(int x, int y, int z) {
-        Cargo returnC = new Cargo("The Ship is Empty!");
         if (!shipIsEmpty()) {
             if (x > row || y > col) {
-                return returnC = new Cargo("Invalid Index!");
+                return null;
             }
             return pile[x - 1][y - 1].deleteCargoIndexStack(z);
         }
-        return returnC;
+        return null;
     }
 
     // delete a cargo by its name

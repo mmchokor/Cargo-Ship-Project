@@ -43,9 +43,11 @@ public class CargoList {
 
     // Method deleteFromFront() that removes the first element from the linked list
     public Cargo deleteFromFront() {
-        Cargo data = first.data;
-        first = first.next;
-        return data;
-
+        if (!isEmpty()) {
+            Cargo data = first.data;
+            first = first.next;
+            return data;
+        }
+        return null;
     }
 }

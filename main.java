@@ -128,8 +128,8 @@ public class main {
                     case 1:
                         // Normal Method abd that by removing the nearest cargo on the ship
                         Cargo temp = s.popCargo();
-                        if (temp.getSn().equals("The Ship is Empty!")) {
-                            System.out.println(temp.getSn());
+                        if (temp == null) {
+                            System.out.println("There is no cargo on the ship");
                         } else {
                             System.out.println(temp.getSn() + " has been removed Successfully");
                         }
@@ -146,11 +146,15 @@ public class main {
                         int y = input.nextInt();
                         System.out.println("Enter the z-index you want to remove the cargo from");
                         int z = input.nextInt();
+                        if (x > row || y > column || z > height) {
+                            System.out.println("Invalid Index!");
+                            // to go back to the main menu
+                            backToMenu(input, back);
+                            break;
+                        }
                         Cargo temp1 = s.deleteCargoindexShip(x, y, z);
-                        if (temp1.getSn().equals("The Ship is Empty!")
-                                || temp1.getSn().equals("There is no Cargo at this index")
-                                || temp1.getSn().equals("Invalid Index!")) {
-                            System.out.println(temp1.getSn());
+                        if (temp1 == null) {
+                            System.out.println("There is no cargo at this index on the ship");
                         } else {
                             System.out.println(temp1.getSn() + " has been removed Successfully");
                         }
