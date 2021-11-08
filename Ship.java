@@ -141,16 +141,14 @@ public class Ship {
     }
 
     // delete a cargo by its name
-    public boolean deleteCargoNameShip(String name) {
+    public Cargo deleteCargoNameShip(String name) {
         if (!shipIsEmpty()) {
             int position[] = SearchCargoShip(name);
             if (position[0] != -1) {
-                deleteCargoindexShip(position[0], position[1], position[2]);
-                return true;
+                return deleteCargoindexShip(position[0], position[1], position[2]);
             }
-            return false;
         }
-        return false;
+        return null;
     }
 
     // method to insert a cargo in a certain position
@@ -166,6 +164,7 @@ public class Ship {
     }
 
     public void displayShip() {
+        System.out.println(name + ":");
         if (shipIsEmpty()) {
             System.out.println("The Ship is Empty!");
         } else {

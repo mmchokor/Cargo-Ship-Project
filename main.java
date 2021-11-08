@@ -11,7 +11,7 @@ public class main {
         System.out.println("              Welcome to Chokor Cargo");
         System.out.println("---------------------------------------------------");
         System.out.println("---------------------------------------------------");
-        System.out.println("                      Ship Info");
+        System.out.println("                     Ship Info");
         System.out.println("---------------------------------------------------");
         System.out.println("Enter the Ship name:");
         String shipName = input.nextLine();
@@ -27,7 +27,7 @@ public class main {
 
         do {
             System.out.println("---------------------------------------------------");
-            System.out.println("                      Main Menu");
+            System.out.println("                     Main Menu");
             System.out.println("---------------------------------------------------");
             System.out.println("1 - Add a Cargo to the Ship");
             System.out.println("2 - Remove Cargo From Ship");
@@ -168,10 +168,10 @@ public class main {
                         System.out.println("Enter the Serial Number of the Cargo you want to delete");
                         String snDelete = input.nextLine();
                         snDelete = input.nextLine();
-                        if (s.deleteCargoNameShip(snDelete)) {
-                            System.out.println(snDelete + " has been removed successfully");
-                        } else {
+                        if (s.deleteCargoNameShip(snDelete) == null) {
                             System.out.println(snDelete + " couldn't be found to be removed");
+                        } else {
+                            System.out.println(snDelete + " has been removed successfully");
                         }
 
                         // to go back to the main menu
@@ -224,6 +224,8 @@ public class main {
             default:
                 // Invalid input
                 System.out.println(operator + " is not a valid Menu Option! Please Select Another.");
+                // to go back to the main menu
+                backToMenu(input, back);
                 break;
             }
         } while (operator != 5);

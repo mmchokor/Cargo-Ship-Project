@@ -92,15 +92,14 @@ public class CargoStack extends CargoList {
         return returnC;
     }
 
-    public boolean deleteCargoNameStack(String name) {
+    public Cargo deleteCargoNameStack(String name) {
         if (!isEmpty()) {
             int position = searchCargo(name);
             if (position != -1) {
-                deleteCargoIndexStack(position);
+                return deleteCargoIndexStack(position);
             }
-            return false;
         }
-        return false;
+        return null;
     }
 
     // display method to display the stack elements
