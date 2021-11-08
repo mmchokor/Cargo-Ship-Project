@@ -202,6 +202,20 @@ public class main {
                 break;
 
             case 3:
+                // Searching cargo from the ship menu
+                System.out.println("---------------------------------------------------");
+                System.out.println("                   Cargo Searching");
+                System.out.println("---------------------------------------------------");
+                System.out.println("Enter the Serial number of the Cargo you want to\nlook for:");
+                String snSearch = input.nextLine();
+                snSearch = input.nextLine();
+                int cargoLocation[] = s.SearchCargoShip(snSearch);
+                if (cargoLocation[0] == -1) {
+                    System.out.println("The Cargo couldn't be found");
+                } else {
+                    System.out.println("The Cargo has been found at these coordinates:");
+                    System.out.printf("X: %d; Y: %d; Z: %d \n", cargoLocation[0], cargoLocation[1], cargoLocation[2]);
+                }
 
                 // to go back to the main menu
                 backToMenu(input, back);
