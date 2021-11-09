@@ -1,15 +1,15 @@
-public class TrainCargoNode {
+public class TrainNode {
     // Attributes
-    Cargo data;
-    TrainCargoNode next;
+    TrainCargoList data;
+    TrainNode next;
 
     // default constructor
-    public TrainCargoNode() {
+    public TrainNode() {
         data = null;
     }
 
     // construcotr to create a node with a value
-    public TrainCargoNode(Cargo d) {
+    public TrainNode(TrainCargoList d) {
         this.data = d;
     }
 }

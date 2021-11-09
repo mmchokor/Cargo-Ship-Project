@@ -1,26 +1,26 @@
-public class TrainCargoList {
+public class TrainList {
     // Attributes
-    private CargoNode first;
-    private String trainName = "";
-    private int CargoCounter = 0;
+    TrainNode first;
+    private String name;
 
     // default constructor
-    public TrainCargoList() {
+    public TrainList() {
         first = null;
     }
 
-    public TrainCargoList(String trainName) {
+    // constructor
+    public TrainList(String name) {
         first = null;
-        this.trainName = trainName;
+        this.name = name;
     }
 
-    // getter and setter for CargoCounter
-    public int getCargoCounter() {
-        return this.CargoCounter;
+    // getter and setters for name
+    public String getName() {
+        return this.name;
     }
 
-    public void setCargoCounter(int CargoCounter) {
-        this.CargoCounter = CargoCounter;
+    public void setName(String name) {
+        this.name = name;
     }
 
 
@@ -35,11 +35,10 @@ public class TrainCargoList {
 
     // Method to display the linked list
     public void display() {
-        System.out.println("Train Name: " + trainName);
         if (this.first == null) {
             return;
         }
-        CargoNode printerNode = first;
+        TrainNode printerNode = first;
         while (printerNode != null) {
             System.out.print(printerNode.data + " ");
             printerNode = printerNode.next;
@@ -48,28 +47,25 @@ public class TrainCargoList {
 
     // Method insertAtBack(int v) that inserts the element of value v at the end of
     // the linked list
-    public void insertAtBack(Cargo v) {
-        CargoNode p = new CargoNode(v);
+    public void insertAtBack(TrainCargoList v) {
+        TrainNode p = new TrainNode(v);
         if (first == null) {
             first = p;
         } else {
-            CargoNode current = first;
+            TrainNode current = first;
             while (current.next != null) {
                 current = current.next;
             }
             current.next = p;
-            CargoCounter++;
         }
     }
 
     // Method deleteFromFront() that removes the first element from the linked list
-    public Cargo deleteFromFront() {
+    public TrainCargoList deleteFromFront() {
         if (isEmpty()) {
-            return null;
-        } else {
-            Cargo temp = first.data;
-            first = first.next;
-            return temp;
         }
+        TrainCargoList data = first.data;
+        first = first.next;
+        return data;
     }
 }
