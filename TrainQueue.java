@@ -1,5 +1,8 @@
 public class TrainQueue extends TrainList {
 
+    // Attributes
+    private int numberOfTrains = 0;
+
     // Constructor
     public TrainQueue() {
         super();
@@ -9,13 +12,19 @@ public class TrainQueue extends TrainList {
         super(name);
     }
 
+    // getter for numberOfTrains
+    public int getNumberOfTrains() {
+        return numberOfTrains;
+    }
+
     // Method: enqueue
-    public void enqueue(TrainCargoList element) {
+    public void enqueueTrain(TrainCargoList element) {
         insertAtBack(element);
+        numberOfTrains++;
     }
 
     // Method: dequeue
-    public TrainCargoList dequeue() {
+    public TrainCargoList dequeueTrain() {
         return deleteFromFront();
     }
 
@@ -23,12 +32,12 @@ public class TrainQueue extends TrainList {
     public void display() {
         TrainQueue temp = new TrainQueue();
         while (!isEmpty()) {
-            TrainCargoList tempData = dequeue();
-            temp.enqueue(tempData);
-            System.out.println(tempData);
+            TrainCargoList tempData = dequeueTrain();
+            temp.enqueueTrain(tempData);
+            tempData.display();
         }
         while (!temp.isEmpty()) {
-            enqueue(temp.dequeue());
+            enqueueTrain(temp.dequeueTrain());
         }
         System.out.println();
     }

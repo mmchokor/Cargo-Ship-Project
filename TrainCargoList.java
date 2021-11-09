@@ -35,20 +35,20 @@ public class TrainCargoList {
 
     // Method to display the linked list
     public void display() {
-        System.out.println("Train Name: " + trainName);
+        System.out.println("Train " + trainName + ": ");
         if (this.first == null) {
             return;
         }
         CargoNode printerNode = first;
         while (printerNode != null) {
-            System.out.print(printerNode.data + " ");
+            System.out.print(printerNode.data.getSn() + " ");
             printerNode = printerNode.next;
         }
     }
 
     // Method insertAtBack(int v) that inserts the element of value v at the end of
     // the linked list
-    public void insertAtBack(Cargo v) {
+    public void addCargo(Cargo v) {
         CargoNode p = new CargoNode(v);
         if (first == null) {
             first = p;
