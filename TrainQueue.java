@@ -35,6 +35,7 @@ public class TrainQueue extends TrainList {
             TrainCargoList tempData = dequeueTrain();
             temp.enqueueTrain(tempData);
             tempData.display();
+            System.out.println();
         }
         while (!temp.isEmpty()) {
             enqueueTrain(temp.dequeueTrain());

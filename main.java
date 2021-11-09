@@ -24,6 +24,7 @@ public class main {
 
         // Creating an object s that can access the ship class
         Ship s = new Ship(shipName, row, column, height);
+        TrainQueue tq = new TrainQueue();
 
         do {
             System.out.println("---------------------------------------------------");
@@ -33,7 +34,10 @@ public class main {
             System.out.println("2 - Remove Cargo From Ship");
             System.out.println("3 - Search for Cargo on the Ship");
             System.out.println("4 - Display the Cargo on the Ship");
-            System.out.println("5 - Exit Program");
+            System.out.println("5 - Add a Train to the Queue");
+            System.out.println("6 - Dequeue a Train to add its Cargo to the ship");
+            System.out.println("7 - Display the Trains in the Queue");
+            System.out.println("8 - Exit Program");
             System.out.println("Enter the Menu Number you want to Enter: ");
             operator = input.nextInt();
             System.out.println("---------------------------------------------------");
@@ -230,6 +234,60 @@ public class main {
                 break;
 
             case 5:
+                // add train to the queue
+                System.out.println("Enter the number Trains you want to Enqueue");
+                int trainCount = input.nextInt();
+                for (int i = 0; i < trainCount; i++) {
+                    System.out.println("Enter the name of the Train:");
+                    String trainName = input.nextLine();
+                    if (i == 0) {
+                        trainName = input.nextLine();                        
+                    }
+                    // initalize the train
+                    TrainCargoList t = new TrainCargoList(trainName);
+                    System.out.println("How many Cargo Cart this train has:");
+                    int cargoCartCount = input.nextInt();
+                    for (int j = 0; j < cargoCartCount; j++) {
+                        System.out.println("Enter the Serial Number of the Cargo");
+                        String cargoSN = input.nextLine();
+                        if (j == 0) {
+                            cargoSN = input.nextLine();                            
+                        }
+                        Cargo c = new Cargo(cargoSN);
+                        if (t.addCargo(c)) {
+                            System.out.println(cargoSN + " has been added to the train successfully");
+                        } else {
+                            System.out.println(cargoSN + " couldn't be added to the train");
+                        }
+                    }
+                    tq.enqueueTrain(t);
+                }
+
+                // to go back to the main menu
+                backToMenu(input, back);
+
+                break;
+
+            case 6:
+                // remove train from the queue
+
+
+                // to go back to the main menu
+                backToMenu(input, back);
+
+                break;
+
+            case 7:
+                // display the trains in the queue
+                System.out.println("The Train Queue:");
+                tq.display();
+
+                // to go back to the main menu
+                backToMenu(input, back);
+
+                break;
+
+            case 8:
                 // To exit Program
                 System.out.println("Exiting in process...");
                 System.exit(0);
@@ -242,7 +300,7 @@ public class main {
                 backToMenu(input, back);
                 break;
             }
-        } while (operator != 5);
+        } while (operator != 8);
         input.close();
     }
 

@@ -48,10 +48,11 @@ public class TrainCargoList {
 
     // Method insertAtBack(int v) that inserts the element of value v at the end of
     // the linked list
-    public void addCargo(Cargo v) {
+    public boolean addCargo(Cargo v) {
         CargoNode p = new CargoNode(v);
         if (first == null) {
             first = p;
+            return true;
         } else {
             CargoNode current = first;
             while (current.next != null) {
@@ -59,6 +60,7 @@ public class TrainCargoList {
             }
             current.next = p;
             CargoCounter++;
+            return true;
         }
     }
 
