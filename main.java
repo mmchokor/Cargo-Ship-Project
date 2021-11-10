@@ -241,7 +241,7 @@ public class main {
                     System.out.println("Enter the name of the Train:");
                     String trainName = input.nextLine();
                     if (i == 0) {
-                        trainName = input.nextLine();                        
+                        trainName = input.nextLine();
                     }
                     // initalize the train
                     TrainCargoList t = new TrainCargoList(trainName);
@@ -251,7 +251,7 @@ public class main {
                         System.out.println("Enter the Serial Number of the Cargo");
                         String cargoSN = input.nextLine();
                         if (j == 0) {
-                            cargoSN = input.nextLine();                            
+                            cargoSN = input.nextLine();
                         }
                         Cargo c = new Cargo(cargoSN);
                         if (t.addCargo(c)) {
@@ -269,8 +269,17 @@ public class main {
                 break;
 
             case 6:
-                // remove train from the queue
+                // remove train from the queue and add it cargo to the ship
+                System.out.println("There is " + tq.getNumberOfTrains() + " in the Queue.");
+                System.out.println("How many trains you want to remove");
+                int trainDequeue = input.nextInt();
+                for (int i = 0; i < trainDequeue && !tq.isEmpty(); i++) {
+                    TrainCargoList t1 = tq.dequeueTrain();
 
+                    for (int j = 0; j <= t1.getCargoCounter(); j++) {
+                        s.pushCargo(t1.deleteFromFront());
+                    }
+                }
 
                 // to go back to the main menu
                 backToMenu(input, back);

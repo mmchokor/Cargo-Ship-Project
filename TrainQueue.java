@@ -39,6 +39,7 @@ public class TrainQueue extends TrainList {
         }
         while (!temp.isEmpty()) {
             enqueueTrain(temp.dequeueTrain());
+            numberOfTrains--;
         }
         System.out.println();
     }
