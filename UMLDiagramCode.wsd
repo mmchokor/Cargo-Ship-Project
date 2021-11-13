@@ -1,0 +1,131 @@
+@startuml
+scale 2
+class Ship {
+    -name: String
+    #pile: CargoStack[][]
+    -col: int
+    -row: int
+    -name: String
+
+    +Ship()
+    +Ship(row : int, col : int, stackSize : int)
+    +Ship(name : String, row : int, col : int, stackSize : int)
+    +getName() : String
+    +shipIsEmpty() : boolean
+    +shipIsFull() : boolean
+    +pushCargo() : boolean
+    +popCargo() : Cargo
+    +peekCargo() : Cargo
+    +popAllShip() : boolean
+    +SearchCargoShip(name : String) : int[]
+    +deleteCargoindexShip(x : int, y : int, z : int) : Cargo
+    +deleteCargoNameShip(name : String) : Cargo
+    +stackCargoAtIndex(c : Cargo, x : int, y : int) : boolean
+    +displayShip() : void
+}
+
+class main {
+    +main(args : String{}) : void
+    +backToMenu(input : Scanner, back : int)
+}
+
+class CargoStack {
+    +stackSize: int
+    +currentNb: int
+    +CargoStack()
+    +CargoStack(stackSize : int)
+    +push(value : Cargo) : boolean
+    +pop() : Cargo
+    +peek() : Cargo
+    +isFull() : boolean
+    +searchCargo(value : String) : int
+    +deleteCargoindexStack(index : int) : Cargo
+    +deleteCargoNameStack(name : String) : Cargo
+    +displayStack() : void
+}
+
+class CargoList {
+    -first : CargoNode
+    +CargoList()
+    +isEmpty() : boolean
+    +display() : void
+    +insertAtFront(v : Cargo) : boolean
+    +deleteFromFront() : Cargo
+}
+
+class CargoNode {
+    -next : CargoNode
+    -data : Cargo
+    +CargoNode()
+    +CargoNode(d : Cargo)
+}
+
+class TrainCargoList {
+    -CargoCounter : int
+    -trainName : String
+    -first: CargoNode
+    +TrainCargoList()
+    +TrainCargoList(trainName : String)
+    +getCargoCounter() : int
+    +setCargoCounter(CargoCounter : int) : void
+    +isEmpty() : boolean
+    +display() : void
+    +addCargo(v : Cargo) : boolean
+    +deleteFromFront() : Cargo
+}
+
+class Cargo {
+    #sn : String
+    +Cargo()
+    +Cargo(sn : String)
+    +getSN() : String
+    +setSn(sn : String) : void
+}
+
+class TrainCargoNode {
+    -next : TrainCargoNode
+    -data : Cargo
+    +TrainCargoNode()
+    +TrainCargoNode(d : Cargo)
+}
+
+class TrainList {
+    -name : String
+    -first : TrainNode
+    +TrainList()
+    +TrainList(name : String)
+    +getName()  : String
+    +setName(name : String) : void
+    +isEmpty() : boolean
+    +display() : void
+    +insertAtBack(v : TrainCargoList) : void
+    +deleteFromFront() : TrainCargoList
+}
+
+class TrainNode {
+    -next : TrainNode
+    -data : TrainCargoList
+    +TrainNode()
+    +TrainNode(d : TrainCargoList)
+}
+
+class TrainQueue {
+    -numberOfTrains : int
+    +TrainQueue()
+    +TrainQueue(name : String)
+    +getNumberOfTrains() : int
+    +enqueueTrain(element : TrainCargoList) : void
+    +dequeueTrain() : TrainCargoList
+    +display() : void
+}
+
+CargoList <|-- CargoStack
+TrainQueue <|-- TrainList
+TrainList *-- TrainNode
+TrainNode *-- TrainCargoList
+TrainCargoNode *-- Cargo
+TrainCargoList *-- CargoNode
+CargoNode *-- Cargo
+CargoList *-- CargoNode
+
+@enduml
