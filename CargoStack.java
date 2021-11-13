@@ -1,7 +1,9 @@
 public class CargoStack extends CargoList {
+    // Attributes
     public int currentNb = 0;
     public int stackSize;
 
+    // Constructor
     public CargoStack() {
         super();
     }
@@ -69,7 +71,7 @@ public class CargoStack extends CargoList {
         return search;
     }
 
-    // delete cargo by name
+    // delete cargo by its index
     public Cargo deleteCargoIndexStack(int index) {
         Cargo returnC = null;
         if (!isEmpty()) {
@@ -92,6 +94,8 @@ public class CargoStack extends CargoList {
         return returnC;
     }
 
+    // a method that search for a cargo by its name and if it is found it will
+    // delete it
     public Cargo deleteCargoNameStack(String name) {
         if (!isEmpty()) {
             int position = searchCargo(name);

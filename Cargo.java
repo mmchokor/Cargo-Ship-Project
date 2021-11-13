@@ -1,7 +1,8 @@
 public class Cargo {
-
+    // Attributes
     protected String sn;
 
+    // Constructor
     public Cargo() {
     }
 
@@ -9,6 +10,7 @@ public class Cargo {
         this.sn = sn;
     }
 
+    // Getter and setter
     public String getSn() {
         return this.sn;
     }

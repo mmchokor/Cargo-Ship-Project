@@ -36,10 +36,12 @@ public class Ship {
         }
     }
 
+    // getter for name attribute
     public String getName() {
         return name;
     }
 
+    // method that return true if the ship is empty
     public boolean shipIsEmpty() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -51,6 +53,7 @@ public class Ship {
         return true;
     }
 
+    // method that return true if the ship is full
     public boolean shipIsFull() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -62,6 +65,7 @@ public class Ship {
         return true;
     }
 
+    // methode to place the cargo on the ship on the fathest non full stack
     public boolean pushCargo(Cargo c) {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -74,6 +78,7 @@ public class Ship {
         return false;
     }
 
+    // method to return the nearest Cargo and delete it
     public Cargo popCargo() {
         if (!shipIsEmpty()) {
             for (int i = row - 1; i > -1; i--) {
@@ -87,6 +92,7 @@ public class Ship {
         return null;
     }
 
+    // method that return the nearest Cargo withtout poping it
     public Cargo peekCargo() {
         for (int i = row - 1; i > -1; i--) {
             for (int j = col - 1; j > -1; j--) {
@@ -99,6 +105,7 @@ public class Ship {
         return empty;
     }
 
+    // method to clear out the entire ship
     public boolean popAllShip() {
         if (!shipIsEmpty()) {
             for (int i = row - 1; i > -1; i--) {
@@ -113,6 +120,7 @@ public class Ship {
         return false;
     }
 
+    // method to search for a cargo that it is on the ship
     public int[] SearchCargoShip(String name) {
         if (!shipIsEmpty()) {
             for (int i = 0; i < row; i++) {
