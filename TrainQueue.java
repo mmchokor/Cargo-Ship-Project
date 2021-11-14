@@ -25,6 +25,7 @@ public class TrainQueue extends TrainList {
 
     // Method: dequeue
     public TrainCargoList dequeueTrain() {
+        numberOfTrains--;
         return deleteFromFront();
     }
 

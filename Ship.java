@@ -125,10 +125,12 @@ public class Ship {
         if (!shipIsEmpty()) {
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < col; j++) {
-                    int position = pile[i][j].searchCargo(name);
-                    if (position != -1) {
-                        int location[] = { i + 1, j + 1, position };
-                        return location;
+                    if (!pile[i][j].isEmpty()) {
+                        int position = pile[i][j].searchCargo(name);
+                        if (position != -1) {
+                            int location[] = { i + 1, j + 1, position };
+                            return location;
+                        }
                     }
                 }
             }

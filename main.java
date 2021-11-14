@@ -46,9 +46,9 @@ public class main {
             switch (operator) {
             case 1:
                 // Adding cargo to the ship menu
-                System.out.println("---------------------------------------------------");
-                System.out.println("                   Cargo Adding");
-                System.out.println("---------------------------------------------------");
+                System.out.println("----------------------------------------------------");
+                System.out.println("                    Cargo Adding");
+                System.out.println("----------------------------------------------------");
                 int addingCargoSelect;
                 do {
                     System.out.println("----------------------------------------------------");
@@ -117,9 +117,9 @@ public class main {
                 System.out.println("---------------------------------------------------");
                 int removingCargoSelect;
                 do {
-                    System.out.println("----------------------------------------------------");
-                    System.out.println("                    Removing Method");
-                    System.out.println("----------------------------------------------------");
+                    System.out.println("---------------------------------------------------");
+                    System.out.println("                   Removing Method");
+                    System.out.println("---------------------------------------------------");
                     System.out.println("1 - Normal Method");
                     System.out.println("2 - At Cargo Index Method");
                     System.out.println("3 - By the Cargo name Method");
@@ -227,6 +227,9 @@ public class main {
                 break;
 
             case 4:
+                System.out.println("---------------------------------------------------");
+                System.out.println("                      Display");
+                System.out.println("---------------------------------------------------");
                 s.displayShip();
                 // to go back to the main menu
                 backToMenu(input, back);
@@ -235,6 +238,10 @@ public class main {
 
             case 5:
                 // add train to the queue
+                System.out.println("---------------------------------------------------");
+                System.out.println("                   Train Enqueue");
+                System.out.println("---------------------------------------------------");
+
                 System.out.println("Enter the number Trains you want to Enqueue");
                 int trainCount = input.nextInt();
                 for (int i = 0; i < trainCount; i++) {
@@ -270,11 +277,20 @@ public class main {
 
             case 6:
                 // remove train from the queue and add it cargo to the ship
+                System.out.println("---------------------------------------------------");
+                System.out.println("                   Train Dequeue");
+                System.out.println("---------------------------------------------------");
+
                 System.out.println("There is " + tq.getNumberOfTrains() + " in the Queue.");
                 System.out.println("How many trains you want to remove");
                 int trainDequeue = input.nextInt();
                 for (int i = 0; i < trainDequeue && !tq.isEmpty(); i++) {
                     TrainCargoList t1 = tq.dequeueTrain();
+                    if (t1 == null) {
+                        System.out.println("The Queue is Empty");
+                    } else {
+                        System.out.println(t1.getTrainName() + " was removed successfully");
+                    }
 
                     for (int j = 0; j <= t1.getCargoCounter(); j++) {
                         s.pushCargo(t1.deleteFromFront());
@@ -288,7 +304,9 @@ public class main {
 
             case 7:
                 // display the trains in the queue
-                System.out.println("The Train Queue:");
+                System.out.println("---------------------------------------------------");
+                System.out.println("                  The Train Queue");
+                System.out.println("---------------------------------------------------");
                 tq.display();
 
                 // to go back to the main menu

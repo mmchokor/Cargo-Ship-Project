@@ -14,13 +14,17 @@ public class TrainCargoList {
         this.trainName = trainName;
     }
 
-    // getter and setter for CargoCounter
+    // getter and setter for CargoCounter and getter for trainName
     public int getCargoCounter() {
         return this.CargoCounter;
     }
 
     public void setCargoCounter(int CargoCounter) {
         this.CargoCounter = CargoCounter;
+    }
+
+    public String getTrainName() {
+        return this.trainName;
     }
 
 
