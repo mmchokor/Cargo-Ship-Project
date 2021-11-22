@@ -27,6 +27,7 @@ class Ship {
 class main {
     +main(args : String{}) : void
     +backToMenu(input : Scanner, back : int)
+    +readInt(input : Scanner, prompt : String)
 }
 
 class CargoStack {
