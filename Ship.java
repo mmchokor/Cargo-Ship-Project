@@ -141,11 +141,15 @@ public class Ship {
 
     // delete a cargo by its index
     public Cargo deleteCargoindexShip(int x, int y, int z) {
-        if (!shipIsEmpty()) {
-            if (x > row || y > col) {
-                return null;
-            }
-            return pile[x - 1][y - 1].deleteCargoIndexStack(z);
+        try {
+            if (!shipIsEmpty()) {
+                if (x > row || y > col) {
+                    return null;
+                }
+                return pile[x - 1][y - 1].deleteCargoIndexStack(z);
+            }            
+        } catch (Exception e) {
+            return null;
         }
         return null;
     }
@@ -164,9 +168,13 @@ public class Ship {
     // method to insert a cargo in a certain position
     public boolean stackCargoAtIndex(Cargo c, int x, int y) {
         if (!shipIsFull()) {
-            if (!pile[x - 1][y - 1].isFull()) {
-                pile[x - 1][y - 1].push(c);
-                return true;
+            try {
+                if (!pile[x - 1][y - 1].isFull()) {
+                    pile[x - 1][y - 1].push(c);
+                    return true;
+                }                
+            } catch (Exception e) {
+                return false;
             }
             return false;
         }

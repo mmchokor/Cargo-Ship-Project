@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class main {
@@ -15,12 +16,9 @@ public class main {
         System.out.println("---------------------------------------------------");
         System.out.println("Enter the Ship name:");
         String shipName = input.nextLine();
-        System.out.println("Please Enter how many rows the ship can handle: ");
-        int row = input.nextInt();
-        System.out.println("Please Enter how many columns the ship can handle: ");
-        int column = input.nextInt();
-        System.out.println("Please Enter how many cargo the ship can Stack: ");
-        int height = input.nextInt();
+        int row = readInt(input, "Please Enter how many rows the ship can handle: ");
+        int column = readInt(input, "Please Enter how many columns the ship can handle: ");
+        int height = readInt(input, "Please Enter how many cargo the ship can Stack: ");
 
         // Creating an object s that can access the ship class
         Ship s = new Ship(shipName, row, column, height);
@@ -38,8 +36,7 @@ public class main {
             System.out.println("6 - Dequeue a Train to add its Cargo to the ship");
             System.out.println("7 - Display the Trains in the Queue");
             System.out.println("8 - Exit Program");
-            System.out.println("Enter the Menu Number you want to Enter: ");
-            operator = input.nextInt();
+            operator = readInt(input, "Enter the Menu Number you want to Enter: ");
             System.out.println("---------------------------------------------------");
             System.out.println();
 
@@ -57,8 +54,7 @@ public class main {
                     System.out.println("1 - Normal Method");
                     System.out.println("2 - At Certain Index Method");
                     System.out.println("3 - Return to main menu");
-                    System.out.println("Enter the Adding method number:");
-                    addingCargoSelect = input.nextInt();
+                    addingCargoSelect = readInt(input, "Enter the Adding method number: ");
 
                     switch (addingCargoSelect) {
                     case 1:
@@ -83,10 +79,8 @@ public class main {
                         String cargoSN1 = input.nextLine();
                         cargoSN1 = input.nextLine();
                         Cargo c1 = new Cargo(cargoSN1);
-                        System.out.println("Enter the x-index you want to add the cargo at");
-                        int x = input.nextInt();
-                        System.out.println("Enter the y-index you want to add the cargo at");
-                        int y = input.nextInt();
+                        int x = readInt(input, "Enter the x-index you want to add the cargo at: ");
+                        int y = readInt(input, "Enter the y-index you want to add the cargo at: ");
                         if (s.stackCargoAtIndex(c1, x, y)) {
                             System.out.println(cargoSN1 + " has been added to the ship successfully");
                         } else {
@@ -125,8 +119,7 @@ public class main {
                     System.out.println("3 - By the Cargo name Method");
                     System.out.println("4 - Remove all the Cargo on the Ship");
                     System.out.println("5 - Return to main menu");
-                    System.out.println("Enter the Adding method number:");
-                    removingCargoSelect = input.nextInt();
+                    removingCargoSelect = readInt(input, "Enter the Adding method number: ");
 
                     switch (removingCargoSelect) {
                     case 1:
@@ -144,23 +137,17 @@ public class main {
 
                     case 2:
                         // At Certain Index Method
-                        System.out.println("Enter the x-index you want to remove the cargo from");
-                        int x = input.nextInt();
-                        System.out.println("Enter the y-index you want to remove the cargo from");
-                        int y = input.nextInt();
-                        System.out.println("Enter the z-index you want to remove the cargo from");
-                        int z = input.nextInt();
-                        if (x > row || y > column || z > height) {
-                            System.out.println("Invalid Index!");
-                            // to go back to the main menu
-                            backToMenu(input, back);
-                            break;
-                        }
+                        int x = readInt(input, "Enter the x-index you want to remove the cargo from: ");
+                        int y = readInt(input, "Enter the y-index you want to remove the cargo from: ");
+                        int z = readInt(input, "Enter the z-index you want to remove the cargo from: ");
                         Cargo temp1 = s.deleteCargoindexShip(x, y, z);
                         if (temp1 == null) {
                             System.out.println("There is no cargo at this index on the ship");
                         } else {
                             System.out.println(temp1.getSn() + " has been removed Successfully");
+                        }
+                        if (x > row || y > column || z > height) {
+                            System.out.println("Invalid Index!");
                         }
 
                         // to go back to the main menu
@@ -242,8 +229,7 @@ public class main {
                 System.out.println("                   Train Enqueue");
                 System.out.println("---------------------------------------------------");
 
-                System.out.println("Enter the number Trains you want to Enqueue");
-                int trainCount = input.nextInt();
+                int trainCount = readInt(input, "Enter the number Trains you want to Enqueue");
                 for (int i = 0; i < trainCount; i++) {
                     System.out.println("Enter the name of the Train:");
                     String trainName = input.nextLine();
@@ -252,8 +238,7 @@ public class main {
                     }
                     // initalize the train
                     TrainCargoList t = new TrainCargoList(trainName);
-                    System.out.println("How many Cargo Cart this train has:");
-                    int cargoCartCount = input.nextInt();
+                    int cargoCartCount = readInt(input, "How many Cargo Cart this train has:");
                     for (int j = 0; j < cargoCartCount; j++) {
                         System.out.println("Enter the Serial Number of the Cargo");
                         String cargoSN = input.nextLine();
@@ -282,8 +267,7 @@ public class main {
                 System.out.println("---------------------------------------------------");
 
                 System.out.println("There is " + tq.getNumberOfTrains() + " in the Queue.");
-                System.out.println("How many trains you want to remove");
-                int trainDequeue = input.nextInt();
+                int trainDequeue = readInt(input, "How many trains you want to remove");
                 for (int i = 0; i < trainDequeue && !tq.isEmpty(); i++) {
                     TrainCargoList t1 = tq.dequeueTrain();
                     if (t1 == null) {
@@ -341,5 +325,17 @@ public class main {
             }
             System.out.println();
         } while (back != 0);
+    }
+
+    public static int readInt(Scanner input, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                return input.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Input! Try Again.");
+                input.nextLine();
+            }
+        }
     }
 }
