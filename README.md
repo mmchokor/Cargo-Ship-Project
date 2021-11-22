@@ -1,4 +1,6 @@
-# CMPS327---Project
+# Cargo-Ship-Project
+
+## CMPS347 Project
 
 **Version 1.0**
 
