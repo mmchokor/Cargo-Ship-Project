@@ -229,7 +229,7 @@ public class main {
                 System.out.println("                   Train Enqueue");
                 System.out.println("---------------------------------------------------");
 
-                int trainCount = readInt(input, "Enter the number Trains you want to Enqueue");
+                int trainCount = readInt(input, "Enter the number Trains you want to Enqueue: ");
                 for (int i = 0; i < trainCount; i++) {
                     System.out.println("Enter the name of the Train:");
                     String trainName = input.nextLine();
